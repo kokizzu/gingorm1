@@ -1,10 +1,22 @@
 # gingorm1
 
-## MVC
-### presentation -> business -> model
+```
+# MVC
+presentation -> business -> model
 
-## clean
-### model -> presentation -> business
+# Clean
+model -> presentation -> business
+
+presentation should only care about transport and serialization/deserialization
+model should only carea about DAO and persistence (can be decoupled)
+business should only care about business logic
+
+presentation can access business
+business can access model
+
+model should not ever depend on business
+business should not ever depend on presentation
+```
 
 ## initial setup
 
