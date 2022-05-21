@@ -4,10 +4,11 @@ This is example of [how to structure your golang project](https://kokizzu.blogsp
 
 ```
 # MVC
-presentation -> business -> model
+presentation -calls-> business -calls-> model
 
 # Clean
-model|presentation -> business
+model -injected-into-> business
+presentation -calls-> business
 
 presentation should only care about transport and serialization/deserialization
 model should only care about DAO and persistence (can be decoupled)
