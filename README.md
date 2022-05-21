@@ -1,6 +1,6 @@
 # gingorm1
 
-This is example of [how to structure your golang project](https://kokizzu.blogspot.com/2022/05/how-to-structure-layer-your-golang-project.html) article with gin and gorm (you can change it to whatever framework and persistence libraries you like, the structure should still be similar). 
+This is example of [how to structure your golang project](https://kokizzu.blogspot.com/2022/05/how-to-structure-layer-your-golang-project.html) article with gin and gorm (you can change it to whatever framework and persistence libraries you like, the structure should still be similar). echo version [here](https://github.com/kokizzu/echogorm1/).
 
 ```
 # MVC
@@ -12,7 +12,7 @@ presentation -calls-> business
 
 presentation should only care about transport and serialization/deserialization
 model should only care about DAO and persistence (can be decoupled)
-business should only care about business logic
+business should only care about business logic use cases
 
 presentation can access business
 business can access model
@@ -30,6 +30,9 @@ CREATE DATABASE gingorm1;
 docker-compose up
 
 air
+
+make test
+make testv
 ```
 
 ## example manual test
