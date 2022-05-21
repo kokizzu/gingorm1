@@ -72,4 +72,48 @@ func TestGuestLogin(t *testing.T) {
 		want.Equal(t, out)
 	})
 
+	t.Run(`registerEmailMustValid`, func(t *testing.T) {
+		guest.InsertUser = func(email, password string) (err error) {
+			return
+		}
+		in := &Guest_RegisterIn{}
+		out := guest.Guest_Register(in)
+
+		want := autogold.Want(`registerEmailMustValid1`, Guest_RegisterOut{CommonResponse: CommonResponse{
+			ErrorCode: 400,
+			ErrorMsg:  "email too short",
+		}})
+		want.Equal(t, out)
+	})
+
+	t.Run(`registerPasswordValidation`, func(t *testing.T) {
+		guest.InsertUser = func(email, password string) (err error) {
+			return
+		}
+		in := &Guest_RegisterIn{
+			Email: `foo@bar.com`,
+		}
+		out := guest.Guest_Register(in)
+
+		want := autogold.Want(`registerPasswordValidation1`, Guest_RegisterOut{CommonResponse: CommonResponse{
+			ErrorCode: 400,
+			ErrorMsg:  "password too short",
+		}})
+		want.Equal(t, out)
+	})
+
+	t.Run(`registerMustSuccess`, func(t *testing.T) {
+		guest.InsertUser = func(email, password string) (err error) {
+			return
+		}
+		in := &Guest_RegisterIn{
+			Email:    `foo@bar.com`,
+			Password: `123`,
+		}
+		out := guest.Guest_Register(in)
+
+		want := autogold.Want(`registerMustSuccess1`, Guest_RegisterOut{})
+		want.Equal(t, out)
+	})
+
 }

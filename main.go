@@ -26,6 +26,7 @@ func main() {
 		context.Next()
 	})
 
+	// TODO: refactor common serialization/deserialization to presentation/rest.go
 	r.POST(business.Guest_RegisterRoute, func(c *gin.Context) {
 		//authToken := c.Get(`authToken`)
 		in := business.Guest_RegisterIn{
@@ -55,5 +56,5 @@ func main() {
 		c.JSON(out.ErrorCode, out)
 	})
 
-	r.Run()
+	r.Run(config.ListenAddress)
 }

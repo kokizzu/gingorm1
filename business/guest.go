@@ -52,7 +52,7 @@ type Guest_RegisterOut struct {
 const Guest_RegisterRoute = `/guest/register`
 
 func (g *GuestDeps) Guest_Register(in *Guest_RegisterIn) (out Guest_RegisterOut) {
-	if len(in.Email) > 3 {
+	if len(in.Email) < 3 {
 		out.SetError(400, `email too short`)
 		return
 	}
