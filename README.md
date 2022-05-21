@@ -1,14 +1,16 @@
 # gingorm1
 
+This is example of [how to structure your golang project](https://kokizzu.blogspot.com/2022/05/how-to-structure-layer-your-golang-project.html) article with gin and gorm (you can change it to whatever framework and persistence libraries you like, the structure should still be similar). 
+
 ```
 # MVC
 presentation -> business -> model
 
 # Clean
-model -> presentation -> business
+model|presentation -> business
 
 presentation should only care about transport and serialization/deserialization
-model should only carea about DAO and persistence (can be decoupled)
+model should only care about DAO and persistence (can be decoupled)
 business should only care about business logic
 
 presentation can access business
