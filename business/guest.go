@@ -10,9 +10,9 @@ type GuestDeps struct {
 }
 
 type Guest_LoginIn struct {
-	// CommonRequest
-	Email    string
-	Password string
+	CommonRequest
+	Email    string `json:"email"`
+	Password string `json:"password"`
 }
 
 type Guest_LoginOut struct {
@@ -40,9 +40,9 @@ func (g *GuestDeps) Guest_Login(in *Guest_LoginIn) (out Guest_LoginOut) {
 }
 
 type Guest_RegisterIn struct {
-	// COmmonRequest
-	Email    string
-	Password string
+	CommonRequest
+	Email    string `json:"email"`
+	Password string `json:"password"`
 }
 
 type Guest_RegisterOut struct {

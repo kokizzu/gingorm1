@@ -71,6 +71,11 @@ func TestGuestLogin(t *testing.T) {
 		want := autogold.Want(`correctPasswordCase1`, Guest_LoginOut{})
 		want.Equal(t, out)
 	})
+}
+
+func TestGuestRegister(t *testing.T) {
+
+	guest := GuestDeps{}
 
 	t.Run(`registerEmailMustValid`, func(t *testing.T) {
 		guest.InsertUser = func(email, password string) (err error) {
@@ -115,5 +120,4 @@ func TestGuestLogin(t *testing.T) {
 		want := autogold.Want(`registerMustSuccess1`, Guest_RegisterOut{})
 		want.Equal(t, out)
 	})
-
 }
