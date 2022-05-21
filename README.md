@@ -28,3 +28,4 @@ curl -d '{"email":"test@gmail.com","password":"test123"}' -X POST http://localho
 - censor logs
 - add metrics
 - golangci lint
+- godotenv to load config from env
