@@ -15,13 +15,14 @@ func WriteRestOutput[T any](c *gin.Context, out T, cr *business.CommonResponse) 
 	c.JSON(cr.ErrorCode, out)
 }
 
-func ReadRestInput[T any](c *gin.Context, in *T, cr *business.CommonRequest) {
+func ReadRestInput[T any](c *gin.Context, in *T, cr *business.CommonRequest) bool {
 	err := c.BindJSON(&in)
 	if err != nil {
 		c.JSON(400, gin.H{
 			"error": err.Error(),
 		})
-		return
+		return false
 	}
 	// TODO: read cookie put to cr
+	return true
 }
